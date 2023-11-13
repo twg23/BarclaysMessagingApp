@@ -9,11 +9,12 @@ import java.util.List;
 @RestController
 public class PersonController {
 
-    @GetMapping("/person")
+    @GetMapping("/people")
     List<Person> getPeople(){
         List<Person> people = new ArrayList<>();
-        Person person= new Person();
-        person.setPersonName("Victoria Secret");
+        Person person= new Person("velsie", "velsie.gmail.com");
+//        person.setPersonName("Victoria Secret");
+//        person.setEmailAddress("vs@gmail.com");
         people.add(person);
         return people;
     }
