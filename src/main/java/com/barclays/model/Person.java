@@ -1,31 +1,39 @@
 package com.barclays.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Getter
+//@Setter
+@Entity
+//@NoArgsConstructor
+@Data
 public class Person {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+
     private String personName;
     private String emailAddress;
+    @OneToOne (cascade = CascadeType.PERSIST)
+    private Address address;
 
-   /* public String getPersonName() {
-        return personName;
-    }
 
-    public void setPersonName(String personName) {
+    public Person(Integer id, String personName, String emailAddress) {
+        this.id = id;
         this.personName = personName;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
-    }*/
+    }
+
+    public Person(String personName, String emailAddress) {
+        this.personName = personName;
+        this.emailAddress = emailAddress;
+    }
+
+    public Person() {
+    }
+
 }
